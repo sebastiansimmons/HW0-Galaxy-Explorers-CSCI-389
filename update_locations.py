@@ -32,6 +32,8 @@ t = timeit.timeit(stmt = "update_coords(xs, ys, zs, vx, vy, vz)",
     setup = "from __main__ import update_coords, xs, ys, zs, vx, vy, vz",
     number = iters)
 chksum = sum(xs) + sum(ys) + sum(zs)
-print("Mean time per coordinate: " + str(1000000 * t / (size * iters)) + "us")
-print("Final checksum is: " + str(chksum))
+print(str(size) + " " + str(1000000 * t / (size * iters))) # Output for plotting graphs
+
+#print("Mean time per coordinate: " + str(1000000 * t / (size * iters)) + "us")
+#print("Final checksum is: " + str(chksum))
 exit(0)

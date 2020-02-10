@@ -7,7 +7,7 @@
 #include <chrono>
 //#include <numberic>
 
-using dtype = float;
+using dtype = int64_t;
 
 std::vector<dtype>  generate_random_list(int size, dtype bound){
 	//Generates a random vector of size (size) between -bound and bound
@@ -45,12 +45,14 @@ int main(int argc, char *argv[]){
 	}
 	const int size = atoi(argv[1]);
 	const int iters = atoi(argv[2]);
-	auto xs = generate_random_list(size, 1000.0);
-	auto ys = generate_random_list(size, 1000.0);
-	auto zs = generate_random_list(size, 1000.0);
-	auto vx = generate_random_list(size, 1.0);
-	auto vy = generate_random_list(size, 1.0);
-	auto vz = generate_random_list(size, 1.0);
+	const dtype s_size = 1000;
+	const dtype v_size = 1;
+	auto xs = generate_random_list(size, s_size);
+	auto ys = generate_random_list(size, s_size);
+	auto zs = generate_random_list(size, s_size);
+	auto vx = generate_random_list(size, v_size);
+	auto vy = generate_random_list(size, v_size);
+	auto vz = generate_random_list(size, v_size);
 
 	auto start = std::chrono::high_resolution_clock::now(); 
 	for(int i = 0; i < iters; i++){
@@ -59,10 +61,11 @@ int main(int argc, char *argv[]){
 	auto stop = std::chrono::high_resolution_clock::now(); 
     auto t = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
 
-	std::cout << "Mean time per coordinate: " << t.count()/static_cast<float>(size * iters) <<'\n';
+    std::cout << size << "	" << t.count()/static_cast<float>(size * iters) <<'\n';
+	//std::cout << "Mean time per coordinate: " << t.count()/static_cast<float>(size * iters) <<'\n';
 
 	auto chksum = std::accumulate(xs.begin(), xs.end(), 0.0);
 	chksum += std::accumulate(ys.begin(), ys.end(), 0.0);
 	chksum += std::accumulate(zs.begin(), zs.end(), 0.0);
-	std::cout << "Final checksum is: " <<chksum << '\n';
+	//std::cout << "Final checksum is: " <<chksum << '\n';
 }
