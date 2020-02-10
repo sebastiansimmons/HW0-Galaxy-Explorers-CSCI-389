@@ -10,4 +10,5 @@ My C++ code ran roughly 60x faster than the Python simulation using -O3 optimiza
 ## Part 3
 Float and int16_t were the fastest data types. Increasing the size of the int also increased the time it took to calculate each vector. 
   
-  
+## Part 4
+Python took 211,412 kilobytes while C++ took 52,088 kilobytes of memory. Python was a little less than an order of magnitude more RAM intentsive than C++.
