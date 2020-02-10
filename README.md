@@ -9,3 +9,5 @@ My C++ code ran roughly 60x faster than the Python simulation using -O3 optimiza
 
 ## Part 3
 Float and int16_t were the fastest data types. Increasing the size of the int also increased the time it took to calculate each vector. 
+  
+  
